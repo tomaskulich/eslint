@@ -89,6 +89,79 @@ eslintTester.addRuleTest("lib/rules/lines-around-comment", {
         {
             code: "bar()\n\n/** block block block\n * block \n */\n//line line line\nvar a = 1;",
             options: [{ beforeLineComment: true }]
+        },
+
+        // check for block start comments
+        {
+            code: "function foo(){   \n// line at block start\nvar g = 1;\n}",
+            options: [{
+                beforeLineComment: true,
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "function foo(){// line at block start\nvar g = 1;\n}",
+            options: [{
+                beforeLineComment: true,
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "var foo = function(){\n// line at block start\nvar g = 1;\n}",
+            options: [{
+                beforeLineComment: true,
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "if(true){\n// line at block start\nvar g = 1;\n}",
+            options: [{
+                beforeLineComment: true,
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "if(true){\n\n// line at block start\nvar g = 1;\n}",
+            options: [{
+                beforeLineComment: true,
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "function foo(){   \n/* block comment at block start */\nvar g = 1;\n}",
+            options: [{
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "function foo(){/* block comment at block start */\nvar g = 1;\n}",
+            options: [{
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "var foo = function(){\n/* block comment at block start */\nvar g = 1;\n}",
+            options: [{
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "if(true){\n/* block comment at block start */\nvar g = 1;\n}",
+            options: [{
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "if(true){\n\n/* block comment at block start */\nvar g = 1;\n}",
+            options: [{
+                allowBlockStart: true
+            }]
+        },
+        {
+            code: "while(true){\n\n/* \nblock comment at block start\n */\nvar g = 1;\n}",
+            options: [{
+                allowBlockStart: true
+            }]
         }
 
     ],
